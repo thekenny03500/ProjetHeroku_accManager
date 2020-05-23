@@ -1,4 +1,4 @@
-package ProjHeruku.heroku;
+package cloudaccmanager.heroku;
 
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.webapp.WebAppContext;
