@@ -1,1 +1,1 @@
-web: java -cp target/classes:target/dependency/* ProjHeruku.heroku.Main
+web: java -cp target/classes:target/dependency/* cloudaccmanager.heroku.Main
