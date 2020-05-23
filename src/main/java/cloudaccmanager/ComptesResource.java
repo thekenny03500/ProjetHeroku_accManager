@@ -17,6 +17,8 @@ import javax.ws.rs.core.MediaType;
 
 import Model.CompteBancaire;
 import Model.BDD.CompteBancaireBDD;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
 
 /**
@@ -58,5 +60,28 @@ public class ComptesResource {
         
         return CompteBancaireBDD.getCompteBancaireByNomAndPrenom(nom, prenom);
     }
-
+    
+    /*TODO
+    @DELETE
+    @Path("/comptebancaires/{nomPrenom}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public CompteBancaire getCompteBancaireByNomPrenom(@PathParam("nomPrenom") String nomPrenom) throws Exception {
+        	
+	String nom = nomPrenom.split("-")[0];
+        String prenom = nomPrenom.split("-")[1];
+        
+        return CompteBancaireBDD.getCompteBancaireByNomAndPrenom(nom, prenom);
+    }
+    
+    @POST
+    @Path("/comptebancaires/{nomPrenom}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public CompteBancaire getCompteBancaireByNomPrenom(@PathParam("nomPrenom") String nomPrenom) throws Exception {
+        	
+	String nom = nomPrenom.split("-")[0];
+        String prenom = nomPrenom.split("-")[1];
+        
+        return CompteBancaireBDD.getCompteBancaireByNomAndPrenom(nom, prenom);
+    }
+    */
 }
