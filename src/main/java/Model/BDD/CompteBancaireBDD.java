@@ -92,8 +92,8 @@ public class CompteBancaireBDD extends ConnectionBDD
             {
                toSender = new CompteBancaire(
                       rs.getInt(C_ID),
-                      rs.getNString(C_NOM),
-                      rs.getNString(C_PRENOM),
+                      rs.getString(C_NOM),
+                      rs.getString(C_PRENOM),
                       rs.getFloat(C_ACCOUNT),
                       rs.getBoolean(C_RISK)? ERisk.High: ERisk.Low
               );
@@ -117,8 +117,8 @@ public class CompteBancaireBDD extends ConnectionBDD
                     .append(C_NOM).append(",").append(C_PRENOM).append(",").append(C_ACCOUNT).append(",").append(C_RISK)
                     .append(") VALUES ('")
                     .append(newCompte.getNom()).append("','")
-                    .append(newCompte.getPrenom()).append("','")
-                    .append(newCompte.getAccount()).append("','")
+                    .append(newCompte.getPrenom()).append("',")
+                    .append(newCompte.getAccount()).append(",'")
                     .append(newCompte.getRisk().equals(ERisk.High)?"1":"0")
                     .append("');");
             stmt.executeUpdate(query.toString());
