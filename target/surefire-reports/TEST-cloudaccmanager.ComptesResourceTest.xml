@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="cloudaccmanager.ComptesResourceTest" time="0.834" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="cloudaccmanager.ComptesResourceTest" time="0.819" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="13+33"/>
@@ -54,5 +54,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.endian" value="little"/>
   </properties>
-  <testcase classname="cloudaccmanager.ComptesResourceTest" name="testGetIt" time="0.834"/>
+  <testcase classname="cloudaccmanager.ComptesResourceTest" name="testGetIt" time="0.819"/>
 </testsuite>

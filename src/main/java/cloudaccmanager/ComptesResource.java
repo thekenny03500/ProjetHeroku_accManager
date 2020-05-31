@@ -75,16 +75,10 @@ public class ComptesResource {
         return CompteBancaireBDD.delCompteBancaires(toSuppr);
     }
     
-    /*TODO
     @POST
-    @Path("/comptebancaires/{nomPrenom}")
+    @Path("/comptebancaires/add")
     @Produces(MediaType.APPLICATION_JSON)
-    public CompteBancaire getCompteBancaireByNomPrenom(@PathParam("nomPrenom") String nomPrenom) throws Exception {
-        	
-	String nom = nomPrenom.split("-")[0];
-        String prenom = nomPrenom.split("-")[1];
-        
-        return CompteBancaireBDD.getCompteBancaireByNomAndPrenom(nom, prenom);
+    public CompteBancaire addCompteBancaireByNomPrenom(CompteBancaire newCompte) throws Exception {
+        return CompteBancaireBDD.addCompteBancaires(newCompte);
     }
-    */
 }
