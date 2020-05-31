@@ -17,6 +17,7 @@ import javax.ws.rs.core.MediaType;
 
 import Model.CompteBancaire;
 import Model.BDD.CompteBancaireBDD;
+import Model.ERisk;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
@@ -40,7 +41,19 @@ public class ComptesResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String getTest(){
         //test
+        
         return "Hello World";
+    }
+    
+    @GET
+    @Path("/test/add")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String getTestadd() throws Exception{
+        //test
+        CompteBancaire newCompte = new CompteBancaire(0,"test", "test", 1000f, ERisk.Low);
+        
+        CompteBancaireBDD.addCompteBancaires(newCompte);
+        return "add compte test-test";
     }
     
     @GET
