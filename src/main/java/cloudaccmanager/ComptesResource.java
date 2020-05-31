@@ -65,13 +65,14 @@ public class ComptesResource {
     @DELETE
     @Path("/comptebancaires/{nomPrenom}")
     @Produces(MediaType.APPLICATION_JSON)
-    public CompteBancaire delCompteBancaireByNomPrenom(@PathParam("nomPrenom") String nomPrenom) throws Exception {
+    public boolean delCompteBancaireByNomPrenom(@PathParam("nomPrenom") String nomPrenom) throws Exception {
         	
 	String nom = nomPrenom.split("-")[0];
         String prenom = nomPrenom.split("-")[1];
         
-        CompteBancaire toSupp = CompteBancaireBDD.getCompteBancaireByNomAndPrenom(nom, prenom);
-        return CompteBancaireBDD.delCompteBancaires(toSupp);
+        CompteBancaire toSuppr = CompteBancaireBDD.getCompteBancaireByNomAndPrenom(nom, prenom);
+        
+        return CompteBancaireBDD.delCompteBancaires(toSuppr);
     }
     
     /*TODO
