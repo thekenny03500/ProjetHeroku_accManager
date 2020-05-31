@@ -118,14 +118,12 @@ public class CompteBancaireBDD extends ConnectionBDD
             
             StringBuilder query;
             query = new StringBuilder("SELECT * FROM compteBancaires WHERE ")
-                    .append(C_ID)
-                    .append("=")
-                    .append(id)
+                    .append(C_ID).append("=").append(id)
                     .append(";");
             
             ResultSet rs = stmt.executeQuery(query.toString());
           
-            if(rs.first())
+            while(rs.next())
             {
                toSender = new CompteBancaire(
                       rs.getInt(C_ID),
