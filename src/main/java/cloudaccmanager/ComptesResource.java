@@ -61,9 +61,9 @@ public class ComptesResource {
     }
     
     @GET
-    @Path("/comptebancaires/{id}")
+    @Path("/comptebancaire/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllCompteBancaireByNomPrenom(@PathParam("id") int id) throws Exception {
+    public Response getCompteBancaireById(@PathParam("id") int id) throws Exception {
         return Response.status(Response.Status.OK).entity(CompteBancaireBDD.getCompteBancaireByid(id)).build();
     }
     
