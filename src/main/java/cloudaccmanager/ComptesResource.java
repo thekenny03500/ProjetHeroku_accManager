@@ -21,6 +21,7 @@ import Model.ERisk;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.PathParam;
+import javax.ws.rs.core.Response;
 
 /**
  * REST Web Service
@@ -59,8 +60,8 @@ public class ComptesResource {
     @GET
     @Path("/comptebancaires")
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<CompteBancaire> getAllCompteBancaires() throws Exception {
-            return CompteBancaireBDD.getAllCompteBancaires();
+    public Response getAllCompteBancaires() throws Exception {
+        return Response.status(Response.Status.ACCEPTED).entity(CompteBancaireBDD.getAllCompteBancaires()).build();
     }
     
     @GET
