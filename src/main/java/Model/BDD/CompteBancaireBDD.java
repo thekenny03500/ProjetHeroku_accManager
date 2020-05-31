@@ -53,8 +53,8 @@ public class CompteBancaireBDD extends ConnectionBDD
             while (rs.next()) {
               CompteBancaire temp = new CompteBancaire(
                       rs.getInt(C_ID),
-                      rs.getNString(C_NOM),
-                      rs.getNString(C_PRENOM),
+                      rs.getString(C_NOM),
+                      rs.getString(C_PRENOM),
                       rs.getFloat(C_ACCOUNT),
                       rs.getBoolean(C_RISK)? ERisk.High: ERisk.Low
               );
