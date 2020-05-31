@@ -85,6 +85,7 @@ public class CompteBancaireBDD extends ConnectionBDD
                     .append("' AND ")
                     .append(C_PRENOM)
                     .append("='")
+                    .append(_prenom)
                     .append("';");
             
             ResultSet rs = stmt.executeQuery(query.toString());
