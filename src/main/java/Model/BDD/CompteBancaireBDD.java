@@ -28,7 +28,8 @@ public class CompteBancaireBDD extends ConnectionBDD
     
     private static void createTableIfExiste(Statement stmt) throws SQLException
     {
-        StringBuilder query = new StringBuilder("CREATE TABLE IF NOT EXISTS compteBancaires(")
+        StringBuilder query;
+        query = new StringBuilder("CREATE TABLE IF NOT EXISTS compteBancaires(")
                 .append(C_ID).append(" SERIAL,")
                 .append(C_NOM).append(" VARCHAR(20) NOT NULL,")
                 .append(C_PRENOM).append(" VARCHAR(20) NOT NULL,")
@@ -132,23 +133,30 @@ public class CompteBancaireBDD extends ConnectionBDD
     }
     
     // Permet de supprimer un compte bancaire en base
-    public static void delCompteBancaires(CompteBancaire newCompte) throws Exception
+    public static boolean delCompteBancaires(CompteBancaire delCompte) throws Exception
     {
-        try (Connection connection = getConnectPG()) 
+        if(delCompte != null)
         {
-            Statement stmt = connection.createStatement();
-            createTableIfExiste(stmt);
-            
-            StringBuilder query = new StringBuilder("DELETE FROM compteBancaires WHERE ")
-                    .append(C_ID).append("=").append(newCompte.getId())
-                    .append(";");
-                    
-            stmt.executeUpdate(query.toString());
-        } 
-        catch (Exception e) 
-        {
-            throw e;
+            try (Connection connection = getConnectPG()) 
+            {
+                Statement stmt = connection.createStatement();
+                createTableIfExiste(stmt);
+
+                StringBuilder query = new StringBuilder("DELETE FROM compteBancaires WHERE ")
+                        .append(C_ID).append("=").append(delCompte.getId())
+                        .append(";");
+
+                stmt.executeUpdate(query.toString());
+
+                return true;
+            } 
+            catch (Exception e) 
+            {
+                throw e;
+            }
         }
+        else
+            return false;
     }
 }
 
