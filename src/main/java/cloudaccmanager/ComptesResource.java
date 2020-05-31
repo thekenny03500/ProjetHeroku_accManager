@@ -54,14 +54,17 @@ public class ComptesResource {
     }
     
     @GET
-    @Path("/comptebancaires/{nomPrenom}")
+    @Path("/comptebancaires/{nom}/{prenom}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllCompteBancaireByNomPrenom(@PathParam("nomPrenom") String nomPrenom) throws Exception {
-        	
-	String nom = nomPrenom.split("-")[0];
-        String prenom = nomPrenom.split("-")[1];
-        
+    public Response getAllCompteBancaireByNomPrenom(@PathParam("nom") String nom, @PathParam("Prenom") String prenom) throws Exception {
         return Response.status(Response.Status.OK).entity(CompteBancaireBDD.getAllCompteBancaireByNomAndPrenom(nom, prenom)).build();
+    }
+    
+    @GET
+    @Path("/comptebancaires/{id}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getAllCompteBancaireByNomPrenom(@PathParam("id") int id) throws Exception {
+        return Response.status(Response.Status.OK).entity(CompteBancaireBDD.getCompteBancaireByid(id)).build();
     }
     
     
@@ -69,7 +72,6 @@ public class ComptesResource {
     @Path("/comptebancaires/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response delCompteBancaireById(@PathParam("id") int id) throws Exception {
-        
         return Response.status(Response.Status.OK).entity(CompteBancaireBDD.delCompteBancaire(id)).build();
     }
     
