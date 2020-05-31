@@ -54,9 +54,12 @@ public class ComptesResource {
     }
     
     @GET
-    @Path("/comptebancaires/{nom}/{prenom}")
+    @Path("/comptebancaires/{nomprenom}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getAllCompteBancaireByNomPrenom(@PathParam("nom") String nom, @PathParam("Prenom") String prenom) throws Exception {
+    public Response getAllCompteBancaireByNomPrenom(@PathParam("nomPrenom") String nomPrenom) throws Exception {
+        String nom = nomPrenom.split("-")[0];
+        String prenom = nomPrenom.split("-")[1];
+        
         return Response.status(Response.Status.OK).entity(CompteBancaireBDD.getAllCompteBancaireByNomAndPrenom(nom, prenom)).build();
     }
     
