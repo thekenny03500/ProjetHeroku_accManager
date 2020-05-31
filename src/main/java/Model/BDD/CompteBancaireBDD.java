@@ -68,10 +68,10 @@ public class CompteBancaireBDD extends ConnectionBDD
         }
     }
     
-    // Permet de recuperer un compte bancaire en base par rapport a son nom et prenom
-    public static CompteBancaire getCompteBancaireByNomAndPrenom(String _nom, String _prenom) throws Exception
+    // Permet de recuperer les compte bancaires en base par rapport a son nom et prenom
+    public static ArrayList<CompteBancaire> getAllCompteBancaireByNomAndPrenom(String _nom, String _prenom) throws Exception
     {
-        CompteBancaire toSender = null;
+        ArrayList<CompteBancaire> toSender = new ArrayList<>();
         try (Connection connection = getConnectPG()) 
         {
             Statement stmt = connection.createStatement();
@@ -85,6 +85,41 @@ public class CompteBancaireBDD extends ConnectionBDD
                     .append("' AND ")
                     .append(C_PRENOM)
                     .append("='")
+                    .append("';");
+            
+            ResultSet rs = stmt.executeQuery(query.toString());
+          
+            while(rs.next())
+            {
+               toSender.add(new CompteBancaire(
+                      rs.getInt(C_ID),
+                      rs.getString(C_NOM),
+                      rs.getString(C_PRENOM),
+                      rs.getFloat(C_ACCOUNT),
+                      rs.getBoolean(C_RISK)? ERisk.High: ERisk.Low
+              ));
+            }
+            
+        } catch (Exception e) {
+            throw e;
+        }
+        return toSender;
+    }
+    
+    // Permet de recuperer un compte bancaire en base par rapport a son nom et prenom
+    public static CompteBancaire getCompteBancaireByid(int id) throws Exception
+    {
+        CompteBancaire toSender = null;
+        try (Connection connection = getConnectPG()) 
+        {
+            Statement stmt = connection.createStatement();
+            createTableIfExiste(stmt);
+            
+            StringBuilder query;
+            query = new StringBuilder("SELECT * FROM compteBancaires WHERE ")
+                    .append(C_ID)
+                    .append("='")
+                    .append(id)
                     .append("';");
             
             ResultSet rs = stmt.executeQuery(query.toString());
@@ -109,6 +144,7 @@ public class CompteBancaireBDD extends ConnectionBDD
     // Permet de d'ajouter un compte bancaire en base
     public static CompteBancaire addCompteBancaires(CompteBancaire newCompte) throws Exception
     {
+        int nblign = 0;
         try (Connection connection = getConnectPG()) 
         {
             Statement stmt = connection.createStatement();
@@ -124,19 +160,26 @@ public class CompteBancaireBDD extends ConnectionBDD
                     .append(newCompte.getRisk().equals(ERisk.High)?"1":"0")
                     .append("');");
             
-            stmt.executeUpdate(query.toString());
+            nblign = stmt.executeUpdate(query.toString());
         } 
         catch (Exception e) 
         {
             throw e;
         }
-        return getCompteBancaireByNomAndPrenom(newCompte.getNom(),newCompte.getPrenom());
+        
+        if(nblign > 0)
+        {        
+            ArrayList<CompteBancaire> listCompte = getAllCompteBancaireByNomAndPrenom(newCompte.getNom(),newCompte.getPrenom());
+            return listCompte.get(listCompte.size()-1);
+        }
+        else 
+            return null;
     }
     
     // Permet de supprimer un compte bancaire en base
-    public static boolean delCompteBancaires(CompteBancaire delCompte) throws Exception
+    public static boolean delCompteBancaire(int id) throws Exception
     {
-        if(delCompte != null)
+        if(id > 0)
         {
             try (Connection connection = getConnectPG()) 
             {
@@ -144,12 +187,15 @@ public class CompteBancaireBDD extends ConnectionBDD
                 createTableIfExiste(stmt);
 
                 StringBuilder query = new StringBuilder("DELETE FROM compteBancaires WHERE ")
-                        .append(C_ID).append("=").append(delCompte.getId())
+                        .append(C_ID).append("=").append(id)
                         .append(";");
 
-                stmt.executeUpdate(query.toString());
+                int nblign = stmt.executeUpdate(query.toString());
 
-                return true;
+                if(nblign > 0 )
+                    return true;
+                else
+                    return false;
             } 
             catch (Exception e) 
             {

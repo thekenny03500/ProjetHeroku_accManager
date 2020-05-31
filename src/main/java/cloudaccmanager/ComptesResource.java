@@ -47,17 +47,6 @@ public class ComptesResource {
     }
     
     @GET
-    @Path("/test/add")
-    @Produces(MediaType.TEXT_PLAIN)
-    public String getTestadd() throws Exception{
-        //test
-        CompteBancaire newCompte = new CompteBancaire(0,"test", "test", 1000f, ERisk.Low);
-        
-        CompteBancaireBDD.addCompteBancaires(newCompte);
-        return "add compte test-test";
-    }
-    
-    @GET
     @Path("/comptebancaires")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllCompteBancaires() throws Exception {
@@ -67,26 +56,21 @@ public class ComptesResource {
     @GET
     @Path("/comptebancaires/{nomPrenom}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getCompteBancaireByNomPrenom(@PathParam("nomPrenom") String nomPrenom) throws Exception {
+    public Response getAllCompteBancaireByNomPrenom(@PathParam("nomPrenom") String nomPrenom) throws Exception {
         	
 	String nom = nomPrenom.split("-")[0];
         String prenom = nomPrenom.split("-")[1];
         
-        return Response.status(Response.Status.OK).entity(CompteBancaireBDD.getCompteBancaireByNomAndPrenom(nom, prenom)).build();
+        return Response.status(Response.Status.OK).entity(CompteBancaireBDD.getAllCompteBancaireByNomAndPrenom(nom, prenom)).build();
     }
     
     
     @DELETE
-    @Path("/comptebancaires/{nomPrenom}")
+    @Path("/comptebancaires/{id}")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response delCompteBancaireByNomPrenom(@PathParam("nomPrenom") String nomPrenom) throws Exception {
-        	
-	String nom = nomPrenom.split("-")[0];
-        String prenom = nomPrenom.split("-")[1];
+    public Response delCompteBancaireById(@PathParam("id") int id) throws Exception {
         
-        CompteBancaire toSuppr = CompteBancaireBDD.getCompteBancaireByNomAndPrenom(nom, prenom);
-        
-        return Response.status(Response.Status.OK).entity(CompteBancaireBDD.delCompteBancaires(toSuppr)).build();
+        return Response.status(Response.Status.OK).entity(CompteBancaireBDD.delCompteBancaire(id)).build();
     }
     
     @POST
