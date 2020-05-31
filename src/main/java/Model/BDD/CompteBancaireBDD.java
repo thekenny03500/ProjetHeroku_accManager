@@ -119,9 +119,9 @@ public class CompteBancaireBDD extends ConnectionBDD
             StringBuilder query;
             query = new StringBuilder("SELECT * FROM compteBancaires WHERE ")
                     .append(C_ID)
-                    .append("='")
+                    .append("=")
                     .append(id)
-                    .append("';");
+                    .append(";");
             
             ResultSet rs = stmt.executeQuery(query.toString());
           
