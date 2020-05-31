@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="cloudaccmanager.ComptesResourceTest" time="0.807" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="cloudaccmanager.ComptesResourceTest" time="1.096" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
     <property name="java.vm.version" value="13+33"/>
@@ -39,7 +39,7 @@
     <property name="java.class.path" value="/home/kenny/netbeans-11.3/netbeans/java/maven/boot/plexus-classworlds-2.5.2.jar"/>
     <property name="java.vm.specification.version" value="13"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/kenny/netbeans-11.3/netbeans/java/maven-nblib/netbeans-eventspy.jar clean install"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dmaven.ext.class.path=/home/kenny/netbeans-11.3/netbeans/java/maven-nblib/netbeans-eventspy.jar install"/>
     <property name="java.home" value="/opt/jdk-13"/>
     <property name="user.language" value="fr"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -54,5 +54,5 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.endian" value="little"/>
   </properties>
-  <testcase classname="cloudaccmanager.ComptesResourceTest" name="testGetIt" time="0.807"/>
+  <testcase classname="cloudaccmanager.ComptesResourceTest" name="testGetIt" time="1.096"/>
 </testsuite>

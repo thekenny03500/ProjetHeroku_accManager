@@ -77,7 +77,8 @@ public class CompteBancaireBDD extends ConnectionBDD
             Statement stmt = connection.createStatement();
             createTableIfExiste(stmt);
             
-            StringBuilder query = new StringBuilder("SELECT * FROM compteBancaires WHERE ")
+            StringBuilder query;
+            query = new StringBuilder("SELECT * FROM compteBancaires WHERE ")
                     .append(C_NOM)
                     .append("='")
                     .append(_nom)
@@ -112,6 +113,7 @@ public class CompteBancaireBDD extends ConnectionBDD
         {
             Statement stmt = connection.createStatement();
             createTableIfExiste(stmt);
+            
             StringBuilder query;
             query = new StringBuilder("INSERT INTO compteBancaires(")
                     .append(C_NOM).append(",").append(C_PRENOM).append(",").append(C_ACCOUNT).append(",").append(C_RISK)
@@ -121,9 +123,11 @@ public class CompteBancaireBDD extends ConnectionBDD
                     .append(newCompte.getAccount()).append(",'")
                     .append(newCompte.getRisk().equals(ERisk.High)?"1":"0")
                     .append("');");
+            
             stmt.executeUpdate(query.toString());
             
-            return getCompteBancaireByNomAndPrenom(newCompte.getNom(),newCompte.getPrenom());
+            return new CompteBancaire();
+            //return getCompteBancaireByNomAndPrenom(newCompte.getNom(),newCompte.getPrenom());
         } 
         catch (Exception e) 
         {

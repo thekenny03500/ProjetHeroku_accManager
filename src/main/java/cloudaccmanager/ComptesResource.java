@@ -61,18 +61,18 @@ public class ComptesResource {
     @Path("/comptebancaires")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllCompteBancaires() throws Exception {
-        return Response.status(Response.Status.ACCEPTED).entity(CompteBancaireBDD.getAllCompteBancaires()).build();
+        return Response.status(Response.Status.OK).entity(CompteBancaireBDD.getAllCompteBancaires()).build();
     }
     
     @GET
     @Path("/comptebancaires/{nomPrenom}")
     @Produces(MediaType.APPLICATION_JSON)
-    public CompteBancaire getCompteBancaireByNomPrenom(@PathParam("nomPrenom") String nomPrenom) throws Exception {
+    public Response getCompteBancaireByNomPrenom(@PathParam("nomPrenom") String nomPrenom) throws Exception {
         	
 	String nom = nomPrenom.split("-")[0];
         String prenom = nomPrenom.split("-")[1];
         
-        return CompteBancaireBDD.getCompteBancaireByNomAndPrenom(nom, prenom);
+        return Response.status(Response.Status.OK).entity(CompteBancaireBDD.getCompteBancaireByNomAndPrenom(nom, prenom)).build();
     }
     
     
