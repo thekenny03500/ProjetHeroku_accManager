@@ -34,7 +34,7 @@ public class CompteBancaireBDD extends ConnectionBDD
                 .append(C_NOM).append(" VARCHAR(20) NOT NULL,")
                 .append(C_PRENOM).append(" VARCHAR(20) NOT NULL,")
                 .append(C_ACCOUNT).append(" float8 DEFAULT(0),")
-                .append(C_RISK).append(" BIT DEFAULT(0)")
+                .append(C_RISK).append(" BIT DEFAULT(0),")
                 .append("CONSTRAINT pk_compteBancaires PRIMARY KEY(").append(C_ID).append("));");
         
         stmt.executeUpdate(query.toString());
