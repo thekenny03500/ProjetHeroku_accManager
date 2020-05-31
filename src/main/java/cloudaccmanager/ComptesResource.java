@@ -77,6 +77,7 @@ public class ComptesResource {
     
     @POST
     @Path("/comptebancaires/add")
+    @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public CompteBancaire addCompteBancaireByNomPrenom(CompteBancaire newCompte) throws Exception {
         return CompteBancaireBDD.addCompteBancaires(newCompte);
