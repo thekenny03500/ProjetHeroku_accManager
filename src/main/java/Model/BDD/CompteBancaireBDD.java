@@ -125,14 +125,12 @@ public class CompteBancaireBDD extends ConnectionBDD
                     .append("');");
             
             stmt.executeUpdate(query.toString());
-            
-            return new CompteBancaire();
-            //return getCompteBancaireByNomAndPrenom(newCompte.getNom(),newCompte.getPrenom());
         } 
         catch (Exception e) 
         {
             throw e;
         }
+        return getCompteBancaireByNomAndPrenom(newCompte.getNom(),newCompte.getPrenom());
     }
     
     // Permet de supprimer un compte bancaire en base
