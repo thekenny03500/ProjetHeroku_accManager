@@ -30,7 +30,7 @@ public class AppManagerTest extends JerseyTest{
      */
     @Test
     public void testGetIt() {
-        final String responseMsg = target().path("Approval/test").request().get(String.class);
+        final String responseMsg = target().path("AppManager/test").request().get(String.class);
 
         assertEquals("Hello World", responseMsg);
     }

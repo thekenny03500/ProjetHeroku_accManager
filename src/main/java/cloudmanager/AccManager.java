@@ -93,7 +93,7 @@ public class AccManager {
     @Path("/comptebancaire/add")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response addCompteBancaireByNomPrenom(CompteBancaire newCompte) throws Exception {
+    public Response addCompteBancaire(CompteBancaire newCompte) throws Exception {
         initBase();
         return Response.status(Response.Status.CREATED).entity(CompteBancaireBDD.addCompteBancaires(newCompte)).build();
     }
