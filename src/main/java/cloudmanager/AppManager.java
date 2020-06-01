@@ -70,7 +70,7 @@ public class AppManager {
     @Produces(MediaType.APPLICATION_JSON)
     public Response getApprovalById(@PathParam("id") int id) throws Exception {
         initBase();
-        return Response.status(Response.Status.OK).entity(ApprovalBDD.getAllApprovalByIdCompte(id)).build();
+        return Response.status(Response.Status.OK).entity(ApprovalBDD.getApprovalByid(id)).build();
     }
     
     @DELETE
