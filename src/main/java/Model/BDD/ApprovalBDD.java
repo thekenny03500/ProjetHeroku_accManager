@@ -37,7 +37,7 @@ public class ApprovalBDD extends ConnectionBDD
                     .append(C_IDCOMPTE).append(" INTEGER NOT NULL,")
                     .append(C_ACCOUNT).append(" float8 NOT NULL,")
                     .append(C_ETAT).append(" VARCHAR(10) NOT NULL,")
-                    .append("CONSTRAINT pk_compteBancaires PRIMARY KEY(").append(C_ID).append("),")
+                    .append("CONSTRAINT pk_Approval PRIMARY KEY(").append(C_ID).append("),")
                     .append("CONSTRAINT fk_Approval_compteBancaires FOREIGN KEY(").append(C_IDCOMPTE).append(") REFERENCES compteBancaires(id)")
                     .append(");");
 
