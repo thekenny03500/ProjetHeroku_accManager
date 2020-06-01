@@ -208,8 +208,8 @@ public class ApprovalBDD extends ConnectionBDD
 
                 StringBuilder query;
                 query = new StringBuilder("UPDATE Approval SET ")
-                        .append(C_ETAT).append("=").append(etat)
-                        .append(" WHERE ")
+                        .append(C_ETAT).append("='").append(etat)
+                        .append("' WHERE ")
                         .append(C_ID).append("=").append(id)
                         .append(";");
 

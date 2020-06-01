@@ -91,7 +91,7 @@ public class AppManager {
     }
     
     @GET
-    @Path("/Approval/Accepte/{id}")
+    @Path("/Approval/{id}/Accepte")
     @Produces(MediaType.APPLICATION_JSON)
     public Response accepteApproval(@PathParam("id") int id) throws Exception {
         initBase();
@@ -99,7 +99,7 @@ public class AppManager {
     }
     
     @GET
-    @Path("/Approval/Refuse/{id}")
+    @Path("/Approval/{id}/Refuse")
     @Produces(MediaType.APPLICATION_JSON)
     public Response refuseApproval(@PathParam("id") int id) throws Exception {
         initBase();
