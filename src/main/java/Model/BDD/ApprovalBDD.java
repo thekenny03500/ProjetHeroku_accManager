@@ -151,7 +151,7 @@ public class ApprovalBDD extends ConnectionBDD
                     .append(") VALUES (")
                     .append(newApproval.getIdCompte()).append(",")
                     .append(newApproval.getAccount()).append(",")
-                    .append(newApproval.getEtat())
+                    .append(EApproval.Wait)
                     .append(");");
             
             nblign = stmt.executeUpdate(query.toString());
