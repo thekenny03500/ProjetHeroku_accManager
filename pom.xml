@@ -8,7 +8,7 @@
 	<artifactId>cloudaccmanager</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
-	<name>cloudaccmanager</name>
+	<name>cloudmanager</name>
 
 	<dependencyManagement>
 		<dependencies>

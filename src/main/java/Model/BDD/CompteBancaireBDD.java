@@ -46,7 +46,6 @@ public class CompteBancaireBDD extends ConnectionBDD
         try (Connection connection = getConnectPG()) 
         {
             Statement stmt = connection.createStatement();
-            createTableIfExiste(stmt);
             ResultSet rs = stmt.executeQuery("SELECT * FROM compteBancaires;");
 
             ArrayList<CompteBancaire> output = new ArrayList<>();
@@ -75,7 +74,6 @@ public class CompteBancaireBDD extends ConnectionBDD
         try (Connection connection = getConnectPG()) 
         {
             Statement stmt = connection.createStatement();
-            createTableIfExiste(stmt);
             
             StringBuilder query;
             query = new StringBuilder("SELECT * FROM compteBancaires WHERE ")
@@ -114,7 +112,6 @@ public class CompteBancaireBDD extends ConnectionBDD
         try (Connection connection = getConnectPG()) 
         {
             Statement stmt = connection.createStatement();
-            createTableIfExiste(stmt);
             
             StringBuilder query;
             query = new StringBuilder("SELECT * FROM compteBancaires WHERE ")
@@ -147,7 +144,6 @@ public class CompteBancaireBDD extends ConnectionBDD
         try (Connection connection = getConnectPG()) 
         {
             Statement stmt = connection.createStatement();
-            createTableIfExiste(stmt);
             
             StringBuilder query;
             query = new StringBuilder("INSERT INTO compteBancaires(")
@@ -183,18 +179,15 @@ public class CompteBancaireBDD extends ConnectionBDD
             try (Connection connection = getConnectPG()) 
             {
                 Statement stmt = connection.createStatement();
-                createTableIfExiste(stmt);
 
-                StringBuilder query = new StringBuilder("DELETE FROM compteBancaires WHERE ")
+                StringBuilder query;
+                query = new StringBuilder("DELETE FROM compteBancaires WHERE ")
                         .append(C_ID).append("=").append(id)
                         .append(";");
 
                 int nblign = stmt.executeUpdate(query.toString());
 
-                if(nblign > 0 )
-                    return true;
-                else
-                    return false;
+                return nblign > 0;
             } 
             catch (Exception e) 
             {
@@ -203,6 +196,43 @@ public class CompteBancaireBDD extends ConnectionBDD
         }
         else
             return false;
+    }
+    
+    // Permet de crediter ou debiter un compte
+    public static boolean CreditDebitAccount(int id, float money, boolean credit) throws Exception
+    {
+        CompteBancaire leCompte = getCompteBancaireByid(id);
+        if(credit || leCompte.getAccount() > money)
+        {       
+            if(credit)
+                leCompte.setAccount(leCompte.getAccount()+money);
+            else
+                leCompte.setAccount(leCompte.getAccount()-money);
+            
+            try (Connection connection = getConnectPG()) 
+            {
+                Statement stmt = connection.createStatement();
+
+                    StringBuilder query;
+                    query = new StringBuilder("UPDATE compteBancaires SET ")
+                            .append(C_ACCOUNT).append("=").append(leCompte.getAccount())
+                            .append(" WHERE ")
+                            .append(C_ID).append("=").append(id)
+                            .append(";");
+
+                    int nblign = stmt.executeUpdate(query.toString());
+                    
+                    return nblign >0;
+            }
+            catch (Exception e) 
+            {
+                throw e;
+            }
+        }
+        else
+        {
+            return false;
+        }
     }
 }
 
