@@ -150,9 +150,9 @@ public class ApprovalBDD extends ConnectionBDD
                     .append(C_IDCOMPTE).append(",").append(C_ACCOUNT).append(",").append(C_ETAT)
                     .append(") VALUES (")
                     .append(newApproval.getIdCompte()).append(",")
-                    .append(newApproval.getAccount()).append(",")
+                    .append(newApproval.getAccount()).append(",'")
                     .append(EApproval.Wait)
-                    .append(");");
+                    .append("');");
             
             nblign = stmt.executeUpdate(query.toString());
         } 
