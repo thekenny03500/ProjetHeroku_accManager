@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "470ddc34-37bb-438e-91a5-80018c1935a9",
+		"name": "cloudManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AccManager",
+			"item": [
+				{
+					"name": "test",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/Comptes/test",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Comptes",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllCompte",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/Comptes/comptebancaires",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Comptes",
+								"comptebancaires"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllCompteByName",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/Comptes/comptebancaires/test-test",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Comptes",
+								"comptebancaires",
+								"test-test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddCompte",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nom\": \"test\",\r\n    \"prenom\": \"test\",\r\n    \"account\": 1000.0,\r\n    \"risk\": \"Low\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/Comptes/comptebancaire/add",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Comptes",
+								"comptebancaire",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CreditCompte",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "100",
+							"options": {
+								"raw": {
+									"language": "javascript"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/Comptes/comptebancaire/Credit/1",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Comptes",
+								"comptebancaire",
+								"Credit",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetCompteByID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/Comptes/comptebancaire/1",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Comptes",
+								"comptebancaire",
+								"1"
+							],
+							"query": [
+								{
+									"key": "Content-Type",
+									"value": "application/json",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DelCompteByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/Comptes/comptebancaire/1",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"Comptes",
+								"comptebancaire",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "AppManager",
+			"item": [
+				{
+					"name": "test",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/AppManager/test",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"AppManager",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetAllApprovals",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/AppManager/Approvals",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"AppManager",
+								"Approvals"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getAllApprovalByIdCompte",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/AppManager/Approvals/1",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"AppManager",
+								"Approvals",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AddApproval",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"idCompte\": 2,\r\n    \"account\": 2000.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/AppManager/Approval/add",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"AppManager",
+								"Approval",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getApprovalById",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/AppManager/Approval/2",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"AppManager",
+								"Approval",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "AccepteApproval",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/AppManager/Approval/2/Accepte",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"AppManager",
+								"Approval",
+								"2",
+								"Accepte"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "RefuseApproval",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/AppManager/Approval/3/Refuse",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"AppManager",
+								"Approval",
+								"3",
+								"Refuse"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DelApprovalByID",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "https://cloudaccmanager.herokuapp.com/AppManager/Approval/1",
+							"protocol": "https",
+							"host": [
+								"cloudaccmanager",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"AppManager",
+								"Approval",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
