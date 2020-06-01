@@ -6,13 +6,10 @@
 package cloudmanager;
 
 import Model.BDD.ApprovalBDD;
-import javax.ws.rs.core.Context;
-import javax.ws.rs.core.UriInfo;
+import Model.BDD.CompteBancaireBDD;
 import javax.ws.rs.Produces;
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
-import javax.ws.rs.PUT;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
@@ -27,7 +24,13 @@ public class AppManager {
     /**
      * Creates a new instance of AppManager
      */
-    public AppManager() {
+    public AppManager(){
+    }
+    
+    public void initBase() throws Exception
+    {
+        CompteBancaireBDD.createTableIfExiste();
+        ApprovalBDD.createTableIfExiste();
     }
 
     @GET
@@ -43,6 +46,7 @@ public class AppManager {
     @Path("/Approvals")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllApproval() throws Exception {
+        initBase();
         return Response.status(Response.Status.OK).entity(ApprovalBDD.getAllApproval()).build();
     }
     

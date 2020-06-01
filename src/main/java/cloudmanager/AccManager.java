@@ -30,7 +30,12 @@ public class AccManager {
     /**
      * Creates a new instance of ComptesResource
      */
-    public AccManager() {
+    public AccManager(){
+    }
+    
+    public void initBase() throws Exception
+    {
+        CompteBancaireBDD.createTableIfExiste();
     }
     
     @GET
@@ -46,6 +51,7 @@ public class AccManager {
     @Path("/comptebancaires")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getAllCompteBancaires() throws Exception {
+        initBase();
         return Response.status(Response.Status.OK).entity(CompteBancaireBDD.getAllCompteBancaires()).build();
     }
     
@@ -55,7 +61,7 @@ public class AccManager {
     public Response getAllCompteBancaireByNomPrenom(@PathParam("nomprenom") String nomPrenom) throws Exception {
         String nom = nomPrenom.split("-")[0];
         String prenom = nomPrenom.split("-")[1];
-        
+        initBase();
         return Response.status(Response.Status.OK).entity(CompteBancaireBDD.getAllCompteBancaireByNomAndPrenom(nom, prenom)).build();
     }
     
@@ -71,6 +77,7 @@ public class AccManager {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response CreditCompteBancaireById(@PathParam("id") int id,int money) throws Exception {
+        initBase();
         return Response.status(Response.Status.OK).entity(CompteBancaireBDD.CreditDebitAccount(id,money,true)).build();
     }
     
@@ -78,6 +85,7 @@ public class AccManager {
     @Path("/comptebancaire/{id}")
     @Produces(MediaType.APPLICATION_JSON)
     public Response delCompteBancaireById(@PathParam("id") int id) throws Exception {
+        initBase();
         return Response.status(Response.Status.OK).entity(CompteBancaireBDD.delCompteBancaire(id)).build();
     }
     
@@ -86,6 +94,7 @@ public class AccManager {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Response addCompteBancaireByNomPrenom(CompteBancaire newCompte) throws Exception {
+        initBase();
         return Response.status(Response.Status.CREATED).entity(CompteBancaireBDD.addCompteBancaires(newCompte)).build();
     }
     

@@ -26,18 +26,24 @@ public class CompteBancaireBDD extends ConnectionBDD
     private static final String C_ACCOUNT = "account";
     private static final String C_RISK = "risk";
     
-    private static void createTableIfExiste(Statement stmt) throws SQLException
+    public static void createTableIfExiste() throws SQLException, Exception
     {
-        StringBuilder query;
-        query = new StringBuilder("CREATE TABLE IF NOT EXISTS compteBancaires(")
-                .append(C_ID).append(" SERIAL,")
-                .append(C_NOM).append(" VARCHAR(20) NOT NULL,")
-                .append(C_PRENOM).append(" VARCHAR(20) NOT NULL,")
-                .append(C_ACCOUNT).append(" float8 DEFAULT(0),")
-                .append(C_RISK).append(" BIT DEFAULT('0'),")
-                .append("CONSTRAINT pk_compteBancaires PRIMARY KEY(").append(C_ID).append("));");
-        
-        stmt.executeUpdate(query.toString());
+        try (Connection connection = getConnectPG()) 
+        {
+            Statement stmt = connection.createStatement();
+            StringBuilder query;
+            query = new StringBuilder("CREATE TABLE IF NOT EXISTS compteBancaires(")
+                    .append(C_ID).append(" SERIAL,")
+                    .append(C_NOM).append(" VARCHAR(20) NOT NULL,")
+                    .append(C_PRENOM).append(" VARCHAR(20) NOT NULL,")
+                    .append(C_ACCOUNT).append(" float8 DEFAULT(0),")
+                    .append(C_RISK).append(" BIT DEFAULT('0'),")
+                    .append("CONSTRAINT pk_compteBancaires PRIMARY KEY(").append(C_ID).append("));");
+
+            stmt.executeUpdate(query.toString());
+         } catch (Exception e) {
+           throw e;
+        }
     }
     
     // Permet de recuperer tous les compte bancaires en base

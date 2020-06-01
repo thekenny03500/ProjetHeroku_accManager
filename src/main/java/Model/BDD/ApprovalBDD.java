@@ -26,19 +26,25 @@ public class ApprovalBDD extends ConnectionBDD
     private static final String C_ACCOUNT = "account";
     private static final String C_ETAT = "etat";
     
-    private static void createTableIfExiste(Statement stmt) throws SQLException
+    public static void createTableIfExiste() throws SQLException, Exception
     {
-        StringBuilder query;
-        query = new StringBuilder("CREATE TABLE IF NOT EXISTS Approval(")
-                .append(C_ID).append(" SERIAL,")
-                .append(C_IDCOMPTE).append(" INTEGER NOT NULL,")
-                .append(C_ACCOUNT).append(" float8 NOT NULL,")
-                .append(C_ETAT).append(" VARCHAR(10) NOT NULL,")
-                .append("CONSTRAINT pk_compteBancaires PRIMARY KEY(").append(C_ID).append("),")
-                .append("CONSTRAINT fk_Approval_compteBancaires FOREIGN KEY(").append(C_IDCOMPTE).append(") REFERENCES compteBancaires(id)")
-                .append(");");
-        
-        stmt.executeUpdate(query.toString());
+        try (Connection connection = getConnectPG()) 
+        {
+            Statement stmt = connection.createStatement();
+            StringBuilder query;
+            query = new StringBuilder("CREATE TABLE IF NOT EXISTS Approval(")
+                    .append(C_ID).append(" SERIAL,")
+                    .append(C_IDCOMPTE).append(" INTEGER NOT NULL,")
+                    .append(C_ACCOUNT).append(" float8 NOT NULL,")
+                    .append(C_ETAT).append(" VARCHAR(10) NOT NULL,")
+                    .append("CONSTRAINT pk_compteBancaires PRIMARY KEY(").append(C_ID).append("),")
+                    .append("CONSTRAINT fk_Approval_compteBancaires FOREIGN KEY(").append(C_IDCOMPTE).append(") REFERENCES compteBancaires(id)")
+                    .append(");");
+
+            stmt.executeUpdate(query.toString());
+         } catch (Exception e) {
+           throw e;
+        }
     }
     
     // Permet de recuperer tous les Approval en base
