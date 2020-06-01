@@ -4,8 +4,8 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>cloudaccmanager</groupId>
-	<artifactId>cloudaccmanager</artifactId>
+	<groupId>cloudmanager</groupId>
+	<artifactId>cloudmanager</artifactId>
 	<packaging>war</packaging>
 	<version>1.0-SNAPSHOT</version>
 	<name>cloudmanager</name>
@@ -67,7 +67,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>cloudaccmanager</finalName>
+		<finalName>cloudmanager</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
